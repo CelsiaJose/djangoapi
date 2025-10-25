@@ -1,0 +1,2 @@
+# djangoapi
+Um projecto simples testando uma api em django com cadastramento de usuario a partir de um formulario.Os usuarios estão armazenados em uma base de dados ,postgress. Aonde os mesmos podem ser eliminados ,actualizados ,inseridos e lista-los . Depois fiz uma api do código para para buscar dados do sisteminha testados com o postman para viabilizar a api. O sisteminha é apenas uma prática dos estudos sobre api em django restfull.
