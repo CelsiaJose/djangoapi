@@ -9,10 +9,21 @@
     <ul>
         
         {% for usuario in pessoa %}
-            <li>{{ usuario.nome }} - {{ usuario.email }} - {{ usuario.telefone }}</li>
+            <li>{{ usuario.nome }} - {{ usuario.email }} - {{ usuario.telefone }}
+                
+                <form action="{% url 'deletar_usuario' usuario.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Deseja realmente eliminar este usuário?')">
+                        Eliminar
+                    </button>
+                <a href="{% url 'editar_usuario' usuario.id%}">Editar</a>
+                </form>
+            </li>
         {% empty %}
             <li>Nenhum usuário cadastrado.</li>
         {% endfor %}
+
+        
     </ul>
 </body>
 </html>

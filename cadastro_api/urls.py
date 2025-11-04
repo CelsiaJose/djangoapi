@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from usuarios import views
+#from usuarios.views import handler405 as handler405_view 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.listar_usuarios, name='listar_usuarios'),
     path('cadastrar/', views.cadastrar_usuario, name='cadastrar_usuario'),
+    path('deletar/<int:id_usuario>/', views.deletar_usuario, name='deletar_usuario'),
+    path('editar/<int:id_usuario>/',views.editar_usuario,name='editar_usuario'),
 ]
+

@@ -1,0 +1,25 @@
+<html dir="ltr" lang="pt"><head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#fff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+  <head>
+    <title>Editar usuario</title>
+  </head>
+  <body>
+
+    <h1>aqui esta o usuario</h1>
+    <form method="POST">
+      {% csrf_token %}
+      
+      {{ form1.as_p }}
+      <button type="submit">Editar</button>
+    </form>
+
+    <a href="{% url 'listar_usuarios' %}">Voltar para a lista</a>
+     
+  </body>
+  
+  
+  
+
+  
