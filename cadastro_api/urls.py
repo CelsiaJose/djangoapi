@@ -16,14 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from usuarios import views
+from django.urls import include
 #from usuarios.views import handler405 as handler405_view 
 
 urlpatterns = [
+    path('', include('usuarios.url')),
     path('admin/', admin.site.urls),
-    path('', views.listar_usuarios, name='listar_usuarios'),
-    path('cadastrar/', views.cadastrar_usuario, name='cadastrar_usuario'),
-    path('deletar/<int:id_usuario>/', views.deletar_usuario, name='deletar_usuario'),
-    path('editar/<int:id_usuario>/',views.editar_usuario,name='editar_usuario'),
+    #Estás o url que estão na rota principal vão em seu proprio fixeiro  
 ]
 
+""" path('', views.listar_usuarios, name='listar_usuarios'),
+    path('cadastrar/', views.cadastrar_usuario, name='cadastrar_usuario'),
+    path('deletar/<int:id_usuario>/', views.deletar_usuario, name='deletar_usuario'),
+    path('editar/<int:id_usuario>/',views.editar_usuario,name='editar_usuario'), """
+
+    # Incluir outras url lá do ficehiro url da api
