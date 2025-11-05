@@ -15,6 +15,8 @@ import os
 load_dotenv()
 
 from pathlib import Path
+#Para aumentar data de expiracao no token
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     #app adicionados 
     'rest_framework',  # framework para criar APIs
     'usuarios',
+     'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +149,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=30),  # token de acesso válido por 3 dias
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7), # token de atualização válido por 7 dias
+    "ROTATE_REFRESH_TOKENS": False,              # se True, gera novo refresh token sempre
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}

@@ -19,15 +19,16 @@ from django.urls import path
 from django.urls import include
 #from usuarios.views import handler405 as handler405_view 
 
+
 urlpatterns = [
+
+    #INCLUI TODAS AS URL DO APP USUARIOS
+
     path('', include('usuarios.url')),
+    #INCLUI A URL DO DJANGO PARA ADMIN
     path('admin/', admin.site.urls),
     #Estás o url que estão na rota principal vão em seu proprio fixeiro  
 ]
 
-""" path('', views.listar_usuarios, name='listar_usuarios'),
-    path('cadastrar/', views.cadastrar_usuario, name='cadastrar_usuario'),
-    path('deletar/<int:id_usuario>/', views.deletar_usuario, name='deletar_usuario'),
-    path('editar/<int:id_usuario>/',views.editar_usuario,name='editar_usuario'), """
 
-    # Incluir outras url lá do ficehiro url da api
+

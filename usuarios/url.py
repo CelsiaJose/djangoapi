@@ -1,6 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views #from usuarios import views
+#importes para token api
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 from .views_api import UsuarioViewset #from usuarios import views_api tem apenas uma funcao então importo direito
 # Cria um router e regista o nosso ViewSet
 #cria um roteamento para a classe criada no viewset
@@ -12,6 +17,7 @@ urlpatterns = [
     # URLs da API (Geradas automaticamente pelo router)
     # Incluímos o router.urls sob o prefixo 'api/'
     path('api/', include(router.urls)),
+    
 
         # URLs Tradicionais (HTML) - Mantidas para o seu CRUD original
 
@@ -19,5 +25,10 @@ urlpatterns = [
     path('cadastrar/', views.cadastrar_usuario, name='cadastrar_usuario'),
     path('deletar/<int:id_usuario>/', views.deletar_usuario, name='deletar_usuario'),
     path('editar/<int:id_usuario>/',views.editar_usuario,name='editar_usuario'),
+#Rotas do toktn jws
+    path('api-auth/', include('rest_framework.urls')),  
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+   
 ]
-
